@@ -148,13 +148,20 @@ M.run = function()
     )
   end
 
+  vim.fn.inputsave()
+  local cmd = vim.fn.input({
+    prompt = "Command: ",
+    default = "npx tsc -p",
+  })
+  vim.fn.inputrestore()
+
   local opts = {
     on_stdout = on_stdout,
     on_exit = on_exit,
     stdout_buffered = true,
   }
 
-  vim.fn.jobstart(tsc .. " " .. utils.parse_flags(config.flags), opts)
+  vim.fn.jobstart(cmd, opts)
 end
 
 function M.is_running()
