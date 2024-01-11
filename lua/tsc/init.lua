@@ -151,7 +151,7 @@ M.run = function()
   vim.fn.inputsave()
   local cmd = vim.fn.input({
     prompt = "Command: ",
-    default = "npx tsc -p",
+    default = "npx tsc -p .",
   })
   vim.fn.inputrestore()
 
